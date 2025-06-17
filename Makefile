@@ -11,6 +11,11 @@ build:
 	mix deps.compile
 	mix compile
 
+.PHONY: clean
+clean:
+	mix clean
+	rm -rf _build
+
 $(SECRET_KEY_BASE_FILE):
 	mix phx.gen.secret > $(SECRET_KEY_BASE_FILE)
 
