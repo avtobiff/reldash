@@ -14,7 +14,7 @@ build:
 .PHONY: clean
 clean:
 	mix clean
-	rm -rf _build
+	rm -rf _build deps
 
 $(SECRET_KEY_BASE_FILE):
 	mix phx.gen.secret > $(SECRET_KEY_BASE_FILE)
