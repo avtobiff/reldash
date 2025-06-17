@@ -9,6 +9,7 @@ HOST ?=
 build:
 	mix deps.get
 	mix deps.compile
+	mix compile
 
 $(SECRET_KEY_BASE_FILE):
 	mix phx.gen.secret > $(SECRET_KEY_BASE_FILE)
