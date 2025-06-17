@@ -1,0 +1,54 @@
+RELEASE DASHBOARD
+=================
+This shows the current open and closed tickets for all coming releases.
+The open tickets distinguishes between bug and feature tickets.
+
+
+Build the dashboard
+-------------------
+To build the dashboard, install elixir and then run
+
+    make build
+
+
+Configure the dashboard
+-----------------------
+Create a Jira token that can access the JQL used in the dashboard. It
+needs to be able to use the "approximate-count" REST API end point and
+thus needs "read:jira-work".
+
+Put the Jira token in:
+
+    config/reldash.token
+
+Also configure the releases that should be queried, together with
+release date. This is an erlang file that is consulted, i.e. it has
+lines with tuples of releases and dates as strings, which end with a
+dot, like so:
+
+    {"unix", "1970-01-01"}.
+    {"debian-0.9", "1994-01-26"}.
+
+The order in this file is the order the dashboard will present the
+releases.
+
+Put the releases configuration in:
+
+    config/active-releases.txt
+
+
+Run the dashboard
+-----------------
+To run the dashboard in development mode
+
+    make run-dev
+
+To run in production
+
+    make run
+
+
+License
+-------
+This software is licensed under the GNU GPL v3.0.
+See COPYING for full license.

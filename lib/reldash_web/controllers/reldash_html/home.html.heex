@@ -1,0 +1,52 @@
+  <div/>
+  <table width="400">
+    <tr>
+      <th width="30%" align="left">
+        <h2 class="mt-4 mb-2 font-bold">Release</h2>
+      </th>
+      <th width="37%" align="right">
+        <p class="mt-4 mb-2 font-bold">(bugs + feat) / tot</p>
+      </th>
+      <th align="right">
+        <p class="mt-4 mb-2 font-bold">Date</p>
+      </th>
+    </tr>
+  </table>
+<%= for release <- @release_status do %>
+  <table width="400">
+    <tr>
+      <td width="30%">
+        <h2 class="mt-4 mb-2 font-bold"><%= release.release %></h2>
+      </td>
+      <td width="37%" align="right">
+        <p class="mt-4 mb-2">
+<%= if release.num_issues > 0 do %>
+        ({release.bugs} + {release.features}) / {release.num_issues}
+<% else %>
+        0
+<% end %>
+        </p>
+      </td>
+      <td align="right">
+        <p class="mt-4 mb-2"><%= release.date %></p>
+      </td>
+    </tr>
+  </table>
+
+<%= if release.fixed > 0 or
+       release.num_issues == 0 do %>
+  <div class="bg-green-400 px-6 pt-1 pb-1" style={release.green}>
+    &nbsp;
+  </div>
+<% end %>
+<%= if release.num_issues > 0 do
+      if release.fixed / release.num_issues != 1.0 do %>
+  <div class="bg-red-400 pt-1 pb-1" style={release.red}>
+    &nbsp;
+  </div>
+  <div class="bg-blue-400 pt-1 pb-1" style={release.blue}>
+    &nbsp;
+  </div>
+<%  end
+  end %>
+<% end %>
