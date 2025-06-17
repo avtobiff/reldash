@@ -1,5 +1,6 @@
 /config/active-releases.txt
 /config/reldash.token
+/config/SECRET_KEY_BASE
 
 # The directory Mix will write compiled artifacts to.
 /_build/
