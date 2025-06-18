@@ -21,7 +21,11 @@
       <td width="37%" align="right">
         <p class="mt-4 mb-2">
 <%= if release.num_issues > 0 do %>
+  <%= if release.bugs + release.features > 0 do %>
         ({release.bugs} + {release.features}) / {release.num_issues}
+  <% else %>
+        0 / {release.num_issues}
+  <% end %>
 <% else %>
         0
 <% end %>
